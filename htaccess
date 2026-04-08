@@ -1,13 +1,14 @@
 Options -Indexes
-DirectoryIndex index.html index.php
+DirectoryIndex index.php index.html
 
-<IfModule mod_rewrite.c>
-RewriteEngine Off
-</IfModule>
+RewriteEngine On
 
-<FilesMatch "\.(xml|txt|html|png|jpg|ico|css|js)$">
-    Allow from all
-</FilesMatch>
+RewriteRule ^listen-quran/?$ listen-quran.php [L]
+RewriteRule ^listen-quran/reciter/([a-z0-9-]+)/?$ reciter.php?slug=$1 [L]
+RewriteRule ^surah/([a-z0-9-]+)/?$ surah.php?slug=$1 [L]
+RewriteRule ^read-quran/?$ read-quran.php [L]
+RewriteRule ^dhikr/?$ dhikr.php [L]
+RewriteRule ^islamic-qa/?$ qa.php [L]
 
 AddType application/xml .xml
 AddType text/plain .txt
